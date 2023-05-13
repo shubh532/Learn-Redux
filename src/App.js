@@ -1,9 +1,24 @@
+import { Fragment } from 'react';
+import { useSelector } from 'react-redux';
 import Counter from './components/Counter';
+import Auth from './components/Auth';
+import Header from './components/Header';
+import UserProfile from './components/UserProfile';
+import { AuthencationAction } from './Redux Store/Store';
 
 
 function App() {
+  
+  const IsAuthencation=useSelector(state=>state.Authentication.isAuthencate)
+
   return (
-    <Counter />
+    <Fragment>
+      <Header />
+      {IsAuthencation&&<UserProfile/>}
+      {!IsAuthencation&&<Auth/>}
+      <Counter />
+    </Fragment>
+
   );
 }
 

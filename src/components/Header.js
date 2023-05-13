@@ -1,20 +1,31 @@
+import { useSelector,useDispatch } from 'react-redux';
 import classes from './Header.module.css';
+import { useImperativeHandle } from 'react';
+import { AuthencationAction } from '../Redux Store/Store';
 
 const Header = () => {
+
+  const isAuthencate = useSelector(state => state.Authentication.isAuthencate)
+  const dispatch=useDispatch()
+
+  const IsLogout=()=>{
+    dispatch(AuthencationAction.IsLogout())
+  }
+
   return (
     <header className={classes.header}>
       <h1>Redux Auth</h1>
       <nav>
         <ul>
-          <li>
+          {isAuthencate && <li>
             <a href='/'>My Products</a>
-          </li>
-          <li>
+          </li>}
+          {isAuthencate && <li>
             <a href='/'>My Sales</a>
-          </li>
-          <li>
-            <button>Logout</button>
-          </li>
+          </li>}
+          {isAuthencate && <li>
+            <button onClick={IsLogout}>Logout</button>
+          </li>}
         </ul>
       </nav>
     </header>
