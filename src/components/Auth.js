@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { AuthencationAction } from '../Redux Store/Store';
+import { AuthencationAction } from '../Redux Store/Authetication'; 
 import classes from './Auth.module.css';
 
 const Auth = () => {
@@ -10,7 +10,7 @@ const Auth = () => {
     e.preventDefault()
     dispatch(AuthencationAction.IsLogin())
   }
-  
+
   return (
     <main className={classes.auth}>
       <section>
